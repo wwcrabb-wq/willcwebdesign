@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me — Will C. Web Design, Las Vegas</title>
+  <meta name="description" content="Meet Will C., a Las Vegas web designer who hand-codes custom websites from scratch. No templates, no page builders, no lock-in.">
+  <meta property="og:title" content="About Me — Will C. Web Design, Las Vegas">
+  <meta property="og:description" content="Meet Will C., a Las Vegas web designer who hand-codes custom websites from scratch.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://willcwebdesign.com/about.html">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <meta name="theme-color" content="#faf8f5">
+  <link rel="canonical" href="https://willcwebdesign.com/about.html">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="about.css">
+  <noscript><style>.reveal{opacity:1;transform:none;}</style></noscript>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-text">Will</span>
+        <span class="nav__logo-dot"></span>
+        <span class="nav__logo-text">C</span>
+      </a>
+      <div class="nav__center" id="navLinks">
+        <a href="index.html" class="nav__link nav__link--mobile-home">Home</a>
+        <a href="work.html" class="nav__link">My Work</a>
+        <a href="pricing.html" class="nav__link">Pricing</a>
+        <a href="about.html" class="nav__link nav__link--active">About Me</a>
+        <a href="faq.html" class="nav__link">FAQ</a>
+        <a href="contact.html" class="nav__link nav__link--mobile-cta">Get a Quote</a>
+      </div>
+      <a href="contact.html" class="nav__cta">Get a Quote</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ABOUT HERO -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-hero__grid">
+        <div class="about-hero__photo stagger stagger--1">
+          <img src="portfolio/will-about.webp" alt="Will C." loading="lazy" width="480" height="640">
+        </div>
+        <div class="about-hero__content">
+          <p class="section-label stagger stagger--1">About Me</p>
+          <h1 class="about-hero__title stagger stagger--2">
+            I'm Will.<br>
+            <em>I build websites that earn trust.</em>
+          </h1>
+          <p class="about-hero__bio stagger stagger--3">
+            I got into web design because I kept seeing businesses with great products
+            and terrible websites. People doing incredible work, hidden behind a homepage
+            that made them look amateur. I wanted to fix that.
+          </p>
+          <p class="about-hero__bio stagger stagger--4">
+            Every site I build is hand-coded from scratch. No templates, no page builders,
+            no WordPress themes. Just clean HTML, CSS, and JavaScript that loads fast,
+            works on every device, and makes your business look as professional online
+            as it is in person.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW I WORK -->
+  <section class="about-how">
+    <div class="container">
+      <h2 class="about-section__title reveal">How I work</h2>
+      <div class="about-how__grid">
+        <div class="about-how__item reveal">
+          <strong>You own everything</strong>
+          <p>
+            Domain, hosting, code — all yours from day one. No lock-in,
+            no subscriptions, no designer holding your site hostage.
+          </p>
+        </div>
+        <div class="about-how__item reveal reveal--delay-1">
+          <strong>No hidden costs</strong>
+          <p>
+            The quote is the price. Mobile responsiveness, revisions, SEO setup,
+            and post-launch support are included. Not billed as extras.
+          </p>
+        </div>
+        <div class="about-how__item reveal reveal--delay-2">
+          <strong>Free preview first</strong>
+          <p>
+            Before you pay anything, I design a preview of your homepage.
+            Love it? We move forward. Not convinced? Walk away. Zero risk.
+          </p>
+        </div>
+        <div class="about-how__item reveal reveal--delay-3">
+          <strong>I don't disappear</strong>
+          <p>
+            Post-launch support is included in every package. Something breaks
+            after delivery? I fix it. You're not on your own once the site goes live.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I'VE BUILT -->
+  <section class="about-built">
+    <div class="container">
+      <h2 class="about-section__title reveal">What I've built</h2>
+      <div class="about-built__cards reveal">
+        <a href="work.html" class="about-card" onclick="sessionStorage.setItem('openProject','luke')">
+          <img src="portfolio/luke_homepage.webp" alt="Dr. Luke Allen website" loading="lazy">
+          <div class="about-card__info">
+            <h3>Dr. Luke R. Allen, PhD</h3>
+            <p>Healthcare &middot; 12+ Pages</p>
+          </div>
+        </a>
+        <a href="work.html" class="about-card" onclick="sessionStorage.setItem('openProject','skinfusion')">
+          <img src="portfolio/skinfusion_homepage.webp" alt="SkinFusion website" loading="lazy">
+          <div class="about-card__info">
+            <h3>SkinFusion</h3>
+            <p>Shopify &middot; Skincare</p>
+          </div>
+        </a>
+        <a href="work.html" class="about-card" onclick="sessionStorage.setItem('openProject','vegas')">
+          <img src="portfolio/vegas_autofest_homepage.webp" alt="Vegas AUTOFEST website" loading="lazy">
+          <div class="about-card__info">
+            <h3>Vegas AUTOFEST 2026</h3>
+            <p>Event &middot; Automotive</p>
+          </div>
+        </a>
+        <a href="work.html" class="about-card" onclick="sessionStorage.setItem('openProject','onedayordayone')">
+          <img src="portfolio/onedayordayoneco_homepage.webp" alt="One Day or Day One website" loading="lazy">
+          <div class="about-card__info">
+            <h3>One Day or Day One Co.</h3>
+            <p>E-Commerce &middot; Streetwear</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="about-cta">
+    <div class="container">
+      <div class="about-cta__inner reveal">
+        <h2 class="section-title">
+          Got a project in mind?
+        </h2>
+        <p class="about-cta__desc">
+          Tell me what you need. Free preview included.
+        </p>
+        <a href="contact.html" class="btn btn--primary">Get a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo">
+            <span class="nav__logo-text">Will</span>
+            <span class="nav__logo-dot"></span>
+            <span class="nav__logo-text">C</span>
+          </a>
+          <p class="footer__tagline">Custom-designed websites<br>that work as hard as you do.</p>
+        </div>
+        <div class="footer__nav">
+          <div class="footer__col">
+            <h4 class="footer__heading">Pages</h4>
+            <a href="work.html">My Work</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About Me</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__heading">Services</h4>
+            <a href="pricing.html">Landing Pages</a>
+            <a href="pricing.html">Full Websites</a>
+            <a href="pricing.html">Shopify Stores</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Will C. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Mobile nav
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('nav__center--open');
+      toggle.classList.toggle('nav__toggle--active', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('nav__center--open');
+        toggle.classList.remove('nav__toggle--active');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
+
+</body>
+</html>

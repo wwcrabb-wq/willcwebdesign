@@ -1,0 +1,281 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   About Page
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Hero ──────────────────────────────────────────────────────────────── */
+.about-hero {
+  padding: clamp(6rem, 10vw, 8rem) 0 clamp(2rem, 3vw, 3rem);
+}
+
+.about-hero__grid {
+  display: grid;
+  grid-template-columns: 0.45fr 0.55fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.about-hero__photo img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+}
+
+.about-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 1.75rem + 2.5vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.about-hero__title em {
+  font-style: italic;
+  color: var(--text-2);
+}
+
+.about-hero__bio {
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  color: var(--text-2);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+/* ─── Section Title ─────────────────────────────────────────────────────── */
+.about-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.25rem + 1vw, 2.25rem);
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: clamp(1.25rem, 2vw, 2rem);
+}
+
+/* ─── How I Work ────────────────────────────────────────────────────────── */
+.about-how {
+  padding: clamp(2rem, 4vw, 3.5rem) 0;
+  background: var(--bg-alt);
+}
+
+.about-how__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.about-how__item {
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--accent);
+}
+
+.about-how__item strong {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.375rem;
+}
+
+.about-how__item p {
+  font-size: 0.875rem;
+  color: var(--text-2);
+  line-height: 1.65;
+}
+
+/* ─── What I've Built ───────────────────────────────────────────────────── */
+.about-built {
+  padding: clamp(2rem, 4vw, 3.5rem) 0;
+}
+
+.about-built__cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.about-card {
+  display: block;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+}
+
+.about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(0,0,0,0.1);
+}
+
+.about-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.about-card:hover img {
+  transform: scale(1.03);
+}
+
+.about-card__info {
+  padding: 0.75rem 1rem;
+}
+
+.about-card__info h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.about-card__info p {
+  font-size: 0.8125rem;
+  color: var(--text-2);
+  margin-top: 0.15rem;
+}
+
+/* ─── CTA ───────────────────────────────────────────────────────────────── */
+.about-cta {
+  background: var(--dark);
+  padding: clamp(2rem, 4vw, 3.5rem) 0;
+}
+
+.about-cta__inner {
+  text-align: center;
+}
+
+.about-cta__inner .section-title {
+  color: var(--dark-text);
+}
+
+.about-cta__desc {
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  color: var(--dark-text-2);
+  margin: 0.75rem auto 1.25rem;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Hero — photo left-aligned, smaller, text tight */
+  .about-hero {
+    padding: clamp(5rem, 8vw, 6rem) 0 clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .about-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .about-hero__content {
+    display: contents;
+  }
+
+  .about-hero .section-label {
+    order: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-hero__photo {
+    order: 2;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-hero__photo img {
+    width: 260px;
+    aspect-ratio: 3 / 4;
+    border-radius: var(--radius-lg);
+  }
+
+  .about-hero__title {
+    order: 3;
+    font-size: clamp(1.75rem, 7vw, 2.25rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .about-hero__bio {
+    order: 4;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+
+  /* How I Work — 2x2 grid, compact */
+  .about-how {
+    padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+  }
+
+  .about-section__title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-how__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .about-how__item {
+    padding-left: 0.75rem;
+  }
+
+  .about-how__item strong {
+    font-size: 0.8125rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .about-how__item p {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  /* What I've Built — 2x2 grid */
+  .about-built {
+    padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+  }
+
+  .about-built__cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .about-card img {
+    aspect-ratio: 16 / 12;
+  }
+
+  .about-card__info {
+    padding: 0.5rem 0.625rem;
+  }
+
+  .about-card__info h3 {
+    font-size: 0.75rem;
+  }
+
+  .about-card__info p {
+    font-size: 0.5625rem;
+  }
+
+  /* CTA */
+  .about-cta {
+    padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+  }
+
+  .about-cta__inner .section-title {
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+  }
+
+  .about-cta__desc {
+    font-size: 0.875rem;
+    margin: 0.5rem auto 1rem;
+  }
+
+  .about-cta .btn {
+    width: 100%;
+  }
+}
