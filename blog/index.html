@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZHRBRJPN5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2ZHRBRJPN5');
+  </script>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "w6bc69h9li");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Will C. Web Design, Las Vegas</title>
+  <meta name="description" content="Web design insights for Las Vegas businesses. Tips on websites, SEO, and growing your online presence — from a local designer who hand-codes every site.">
+  <meta property="og:title" content="Blog — Will C. Web Design, Las Vegas">
+  <meta property="og:description" content="Web design insights for Las Vegas businesses. Tips on websites, SEO, and growing your online presence.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://willcwebdesign.com/blog/">
+  <meta property="og:image" content="https://willcwebdesign.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Blog — Will C. Web Design, Las Vegas">
+  <meta name="twitter:description" content="Web design insights for Las Vegas businesses.">
+  <meta name="twitter:image" content="https://willcwebdesign.com/og-image.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="theme-color" content="#faf8f5">
+  <link rel="canonical" href="https://willcwebdesign.com/blog/">
+  <link rel="stylesheet" href="/style.css">
+  <noscript><style>.reveal{opacity:1;transform:none;}</style></noscript>
+
+  <style>
+    .blog-hero {
+      padding: clamp(5.5rem, 14vw, 11rem) 0 clamp(2rem, 4vw, 3rem);
+    }
+    .blog-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .blog-hero__title em { font-style: italic; color: var(--text-2); }
+    .blog-hero__sub {
+      font-size: 1.0625rem;
+      color: var(--text-2);
+      margin-top: 1rem;
+      max-width: 520px;
+    }
+
+    /* ── Blog Grid ── */
+    .blog-grid {
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+    }
+    .blog-grid__list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.25rem, 2.5vw, 2rem);
+    }
+
+    /* ── Grid Card ── */
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(28, 25, 23, 0.08);
+    }
+    .blog-card__img {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+    .blog-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .blog-card:hover .blog-card__img img {
+      transform: scale(1.05);
+    }
+    .blog-card__content {
+      padding: 1.25rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .blog-card__category {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.625rem;
+    }
+    .blog-card__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.1875rem, 2vw, 1.5rem);
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 0.625rem;
+      letter-spacing: -0.01em;
+    }
+    .blog-card__excerpt {
+      font-size: 0.875rem;
+      color: var(--text-2);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .blog-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .blog-card__date {
+      font-size: 0.75rem;
+      color: var(--text-3);
+    }
+    .blog-card__read {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: gap 0.3s;
+    }
+    .blog-card:hover .blog-card__read {
+      gap: 0.5rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .blog-grid__list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .blog-grid__list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+      .blog-card__content {
+        padding: 0.75rem 0.75rem 1rem;
+      }
+      .blog-card__category {
+        font-size: 0.5625rem;
+        margin-bottom: 0.375rem;
+      }
+      .blog-card__title {
+        font-size: 0.8125rem;
+        margin-bottom: 0.375rem;
+      }
+      .blog-card__excerpt {
+        display: none;
+      }
+      .blog-card__footer {
+        padding-top: 0.625rem;
+      }
+      .blog-card__date {
+        font-size: 0.625rem;
+      }
+      .blog-card__read {
+        font-size: 0.625rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <span class="nav__logo-text">Will</span>
+        <span class="nav__logo-dot"></span>
+        <span class="nav__logo-text">C</span>
+      </a>
+      <div class="nav__center" id="navLinks">
+        <a href="/" class="nav__link nav__link--mobile-home">Home</a>
+        <a href="/work/" class="nav__link">My Work</a>
+        <a href="/pricing/" class="nav__link">Pricing</a>
+        <a href="/about/" class="nav__link">About Me</a>
+        <a href="/faq/" class="nav__link">FAQ</a>
+        <a href="/blog/" class="nav__link nav__link--active">Blog</a>
+        <a href="/contact/" class="nav__link nav__link--mobile-cta">Get a Quote</a>
+      </div>
+      <a href="/contact/" class="nav__cta">Get a Quote</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="blog-hero">
+    <div class="container">
+      <p class="section-label stagger stagger--1">Blog</p>
+      <h1 class="blog-hero__title stagger stagger--2">
+        Straight talk about<br>
+        <em>websites that work.</em>
+      </h1>
+      <p class="blog-hero__sub stagger stagger--3">
+        No jargon, no fluff. Just honest advice on web design, SEO, and growing your online presence from a Las Vegas designer who hand-codes every site.
+      </p>
+    </div>
+  </section>
+
+  <!-- BLOG POSTS -->
+  <section class="blog-grid">
+    <div class="container">
+      <div class="blog-grid__list reveal">
+
+        <a href="/blog/website-cost-las-vegas/" class="blog-card">
+          <div class="blog-card__img">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&fit=crop"
+                 alt="Laptop showing website analytics — web design pricing"
+                 loading="lazy" width="600" height="375">
+          </div>
+          <div class="blog-card__content">
+            <p class="blog-card__category">Pricing &middot; Las Vegas</p>
+            <h2 class="blog-card__title">How Much Does a Website Cost in Las Vegas?</h2>
+            <p class="blog-card__excerpt">Real numbers from a local designer who doesn't hide his pricing. What you'll actually pay for a landing page, full site, or Shopify store in 2026.</p>
+            <div class="blog-card__footer">
+              <span class="blog-card__date">April 4, 2026</span>
+              <span class="blog-card__read">Read &rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/website-vs-social-media/" class="blog-card">
+          <div class="blog-card__img">
+            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80&fit=crop"
+                 alt="Social media apps on phone screen"
+                 loading="lazy" width="600" height="375">
+          </div>
+          <div class="blog-card__content">
+            <p class="blog-card__category">Strategy &middot; Small Business</p>
+            <h2 class="blog-card__title">Why Your Business Needs a Website (Not Just Social Media)</h2>
+            <p class="blog-card__excerpt">Still relying on Instagram alone? Here's why Las Vegas businesses need a real website — and what you're losing without one.</p>
+            <div class="blog-card__footer">
+              <span class="blog-card__date">April 4, 2026</span>
+              <span class="blog-card__read">Read &rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/signs-website-outdated/" class="blog-card">
+          <div class="blog-card__img">
+            <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&q=80&fit=crop"
+                 alt="Code on a screen — website audit concept"
+                 loading="lazy" width="600" height="375">
+          </div>
+          <div class="blog-card__content">
+            <p class="blog-card__category">Web Design &middot; Audit</p>
+            <h2 class="blog-card__title">5 Signs Your Website Is Costing You Customers</h2>
+            <p class="blog-card__excerpt">Your website might be driving customers away. Here are 5 warning signs — and what to do about each one.</p>
+            <div class="blog-card__footer">
+              <span class="blog-card__date">April 4, 2026</span>
+              <span class="blog-card__read">Read &rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/what-makes-good-website/" class="blog-card">
+          <div class="blog-card__img">
+            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80&fit=crop"
+                 alt="Clean website on a monitor — good web design"
+                 loading="lazy" width="600" height="375">
+          </div>
+          <div class="blog-card__content">
+            <p class="blog-card__category">Web Design &middot; Guide</p>
+            <h2 class="blog-card__title">What Actually Makes a Good Business Website in 2026</h2>
+            <p class="blog-card__excerpt">Forget trends and buzzwords. Here's what actually matters on a small business website — from a designer who builds them every day.</p>
+            <div class="blog-card__footer">
+              <span class="blog-card__date">April 4, 2026</span>
+              <span class="blog-card__read">Read &rarr;</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="contact">
+    <div class="container">
+      <div class="final-cta reveal">
+        <p class="section-label section-label--light">Let's Work Together</p>
+        <h2 class="section-title section-title--light">
+          Ready for a website<br>
+          <em>you're actually proud of?</em>
+        </h2>
+        <p style="color: var(--dark-text-2); margin-bottom: 1.5rem;">
+          Tell me about your project. Free preview included.
+        </p>
+        <a href="/contact/" class="btn btn--primary">Get a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="/" class="nav__logo">
+            <span class="nav__logo-text">Will</span>
+            <span class="nav__logo-dot"></span>
+            <span class="nav__logo-text">C</span>
+          </a>
+          <p class="footer__tagline">Custom-designed websites<br>that work as hard as you do.</p>
+        </div>
+        <div class="footer__nav">
+          <div class="footer__col">
+            <h3 class="footer__heading">Pages</h3>
+            <a href="/work/">My Work</a>
+            <a href="/pricing/">Pricing</a>
+            <a href="/about/">About Me</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/blog/">Blog</a>
+            <a href="/contact/">Contact</a>
+          </div>
+          <div class="footer__col">
+            <h3 class="footer__heading">Services</h3>
+            <a href="/pricing/">Landing Pages</a>
+            <a href="/pricing/">Full Websites</a>
+            <a href="/pricing/">Shopify Stores</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Will C. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Mobile nav
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('nav__center--open');
+      toggle.classList.toggle('nav__toggle--active', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('nav__center--open');
+        toggle.classList.remove('nav__toggle--active');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
+
+</body>
+</html>
