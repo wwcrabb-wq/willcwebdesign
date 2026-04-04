@@ -1166,6 +1166,9 @@ details[open] .faq__icon::after {
     width: 100%;
     margin-right: 0;
   }
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
@@ -1358,17 +1361,6 @@ details[open] .faq__icon::after {
   }
 
   /* ── Work / Portfolio Grid ── */
-  .projects-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    margin-bottom: 2rem;
-  }
-
-
-  .project-card__info {
-    padding: 1rem;
-  }
-
   .work__cta {
     margin-top: 1.5rem;
     padding-top: 1.5rem;
@@ -1560,7 +1552,7 @@ details[open] .faq__icon::after {
    ═══════════════════════════════════════════════════════════════════════════ */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: clamp(1.25rem, 2.5vw, 2rem);
   margin-bottom: clamp(3rem, 5vw, 5rem);
 }
@@ -1612,11 +1604,15 @@ details[open] .faq__icon::after {
   font-weight: 600;
   color: var(--dark-text-2);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s, background 0.2s;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--dark-text-2);
+  border-radius: var(--radius);
 }
 
 .project-card__link:hover {
   color: var(--dark-text);
+  border-color: var(--dark-text);
 }
 
 .project-card__link--live {
@@ -1629,6 +1625,11 @@ details[open] .faq__icon::after {
 .project-card__link--live:hover {
   background: var(--accent);
   color: var(--surface);
+}
+
+/* "See All My Work" — hidden on desktop, shown on mobile */
+.projects-grid__more {
+  display: none;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -1961,52 +1962,72 @@ details[open] .faq__icon::after {
    MOBILE OVERRIDES — must be last to win specificity
    ═══════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
+
+  /* ── Project grid: 2x2 with 4 visible cards ── */
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .projects-grid .project-card:nth-child(1),
+  .projects-grid .project-card:nth-child(6) {
+    display: none;
+  }
+
+  .projects-grid__more {
+    display: block;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  /* ── Project cards: readable sizing ── */
   .project-card .browser-frame--card img {
-    height: 120px;
+    aspect-ratio: 16 / 10;
+    height: auto;
     object-fit: cover;
     object-position: top center;
   }
 
   .project-card .browser-frame__bar {
-    height: 24px;
+    height: 22px;
     padding: 0 8px;
   }
 
   .project-card .browser-frame__dot {
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
   }
 
   .project-card__info {
-    padding: 0.5rem 0.625rem;
+    padding: 0.625rem 0.625rem 0.75rem;
   }
 
   .project-card__name {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
   }
 
   .project-card__type {
-    font-size: 0.5625rem;
+    font-size: 0.625rem;
+    margin-top: 0.125rem;
   }
 
   .project-card__links {
-    gap: 0.5rem;
-    margin-top: 0.375rem;
+    flex-direction: column;
+    gap: 0.375rem;
+    margin-top: 0.5rem;
   }
 
-  .project-card__link {
-    font-size: 0.625rem;
-  }
-
+  .project-card__link,
   .project-card__link--live {
-    font-size: 0.625rem;
-    padding: 0.25rem 0.75rem;
-  }
-
-  .project-card__info {
-    padding: 0.5rem 0.5rem;
+    font-size: 0.6875rem;
+    padding: 0.375rem 0;
+    text-align: center;
+    width: 100%;
+    display: block;
   }
 }
+
 
 /* ═══════════════════════════════════════════════════════════════════════════
    NOSCRIPT FALLBACK — make content visible if JS fails
