@@ -20,6 +20,10 @@
   <meta property="og:image" content="https://willcwebdesign.com/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Pricing — Will C. Web Design, Las Vegas">
+  <meta name="twitter:description" content="Custom web design in Las Vegas. Landing pages from $499, full websites from $999.">
+  <meta name="twitter:image" content="https://willcwebdesign.com/og-image.jpg">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,6 +38,51 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/pricing-page.css">
   <noscript><style>.reveal{opacity:1;transform:none;}</style></noscript>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Will C. Web Design",
+    "url": "https://willcwebdesign.com",
+    "areaServed": {
+      "@type": "City",
+      "name": "Las Vegas",
+      "containedInPlace": { "@type": "State", "name": "Nevada" }
+    },
+    "priceRange": "$499-$1999",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Web Design Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Launch — Landing Page",
+          "description": "Custom single-page design, mobile responsive, contact form, basic SEO, 2 rounds of revisions, 7-day delivery.",
+          "price": "499",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "name": "Business — Full Website",
+          "description": "5-7 custom-designed pages, mobile-first responsive, brand-consistent design, advanced SEO, blog section, unlimited revisions, 30 days post-launch support.",
+          "price": "999",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "name": "Commerce — Shopify Store",
+          "description": "Full Shopify or e-commerce setup, custom interactive features, app integrations, conversion optimization, 60 days post-launch support.",
+          "price": "1999",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        }
+      ]
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -80,7 +129,7 @@
 
       <!-- Free Preview -->
       <div class="pp__preview-full stagger stagger--3">
-        <h3>Free Preview</h3>
+        <h2>Free Preview</h2>
         <p>I design a preview of your homepage before you pay a cent. Don't love it? Walk away. Zero risk.</p>
         <a href="/contact/" class="pp__preview-link">Get your free preview &rarr;</a>
       </div>
@@ -88,7 +137,7 @@
       <!-- Tiers -->
       <div class="pp__tiers stagger stagger--4">
         <div class="tier">
-          <h4 class="tier__name">Launch</h4>
+          <h3 class="tier__name">Launch</h4>
           <p class="tier__price"><span class="tier__amount">$499</span></p>
           <p class="tier__desc">Landing page or single-page site</p>
           <ul class="tier__features">
@@ -104,7 +153,7 @@
 
         <div class="tier tier--popular">
           <span class="tier__badge">Most Popular</span>
-          <h4 class="tier__name">Business</h4>
+          <h3 class="tier__name">Business</h4>
           <p class="tier__price"><span class="tier__amount">$999</span></p>
           <p class="tier__desc">Full multi-page website</p>
           <ul class="tier__features">
@@ -120,7 +169,7 @@
         </div>
 
         <div class="tier">
-          <h4 class="tier__name">Commerce</h4>
+          <h3 class="tier__name">Commerce</h4>
           <p class="tier__price"><span class="tier__amount">$1,999</span></p>
           <p class="tier__desc">Shopify store or complex site</p>
           <ul class="tier__features">
@@ -139,7 +188,7 @@
       <div class="pp__care-full stagger stagger--5">
         <div class="pp__care-full-inner">
           <div class="pp__care-full-text">
-            <h3>Care Plan</h3>
+            <h2>Care Plan</h2>
             <p>Updates, backups, security monitoring, and 1 hour of content changes per month. Add to any package.</p>
           </div>
           <div class="pp__care-full-price">

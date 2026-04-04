@@ -47,24 +47,34 @@
     "@type": "ProfessionalService",
     "name": "Will C. Web Design",
     "description": "Custom hand-coded web design for small businesses in Las Vegas. Landing pages, full websites, and Shopify stores.",
-    "url": "https://willcdesign.com",
-    "areaServed": {
-      "@type": "City",
-      "name": "Las Vegas",
-      "containedInPlace": {
-        "@type": "State",
-        "name": "Nevada"
-      }
+    "url": "https://willcwebdesign.com",
+    "image": "https://willcwebdesign.com/og-image.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Las Vegas",
+      "addressRegion": "NV",
+      "addressCountry": "US"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "36.1699",
+      "longitude": "-115.1398"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Las Vegas", "containedInPlace": { "@type": "State", "name": "Nevada" } },
+      { "@type": "City", "name": "Henderson", "containedInPlace": { "@type": "State", "name": "Nevada" } },
+      { "@type": "City", "name": "Summerlin", "containedInPlace": { "@type": "State", "name": "Nevada" } }
+    ],
     "priceRange": "$499-$1999",
-    "serviceType": ["Web Design", "Shopify Development", "Landing Page Design"],
+    "serviceType": ["Web Design", "Shopify Development", "Landing Page Design", "E-Commerce Design"],
+    "knowsAbout": ["HTML", "CSS", "JavaScript", "Shopify", "SEO", "Responsive Design"],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Web Design Services",
       "itemListElement": [
-        {"@type": "Offer", "name": "Landing Page", "price": "499", "priceCurrency": "USD"},
-        {"@type": "Offer", "name": "Full Website", "price": "999", "priceCurrency": "USD"},
-        {"@type": "Offer", "name": "Shopify Store", "price": "1999", "priceCurrency": "USD"}
+        {"@type": "Offer", "name": "Landing Page", "price": "499", "priceCurrency": "USD", "availability": "https://schema.org/InStock"},
+        {"@type": "Offer", "name": "Full Website", "price": "999", "priceCurrency": "USD", "availability": "https://schema.org/InStock"},
+        {"@type": "Offer", "name": "Shopify Store", "price": "1999", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}
       ]
     }
   }
