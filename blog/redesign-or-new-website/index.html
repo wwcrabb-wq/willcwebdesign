@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZHRBRJPN5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2ZHRBRJPN5');
+  </script>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "w6bc69h9li");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Should You Redesign Your Website or Start From Scratch? — Will C. Web Design</title>
+  <meta name="description" content="Fix what you have or build something new? Here's how to make the right call — without wasting money on the wrong one.">
+  <meta property="og:title" content="Should You Redesign Your Website or Start From Scratch? — Will C. Web Design">
+  <meta property="og:description" content="Fix what you have or build something new? Here's how to make the right call — without wasting money on the wrong one.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://willcwebdesign.com/blog/redesign-or-new-website/">
+  <meta property="og:image" content="https://willcwebdesign.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Should You Redesign Your Website or Start From Scratch? — Will C. Web Design">
+  <meta name="twitter:description" content="Fix what you have or build something new? Here's how to make the right call.">
+  <meta name="twitter:image" content="https://willcwebdesign.com/og-image.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="theme-color" content="#faf8f5">
+  <link rel="canonical" href="https://willcwebdesign.com/blog/redesign-or-new-website/">
+  <link rel="stylesheet" href="/style.css">
+  <noscript><style>.reveal{opacity:1;transform:none;}</style></noscript>
+
+  <!-- BlogPosting JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Should You Redesign Your Website or Start From Scratch?",
+    "description": "Fix what you have or build something new? Here's how to make the right call — without wasting money on the wrong one.",
+    "author": {
+      "@type": "Person",
+      "name": "Will C.",
+      "url": "https://willcwebdesign.com/about/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Will C. Web Design",
+      "url": "https://willcwebdesign.com"
+    },
+    "datePublished": "2026-04-17",
+    "dateModified": "2026-04-17",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://willcwebdesign.com/blog/redesign-or-new-website/"
+    },
+    "image": "https://willcwebdesign.com/og-image.jpg"
+  }
+  </script>
+
+  <!-- Blog post styles -->
+  <style>
+    /* ── Header ── */
+    .blog-post__header-wrap {
+      padding: clamp(5rem, 8vw, 6.5rem) 0 0;
+    }
+    .blog-post__header {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .blog-post__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-3);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+    .blog-post__back:hover { color: var(--accent); }
+    .blog-post__category {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+    .blog-post__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      margin-bottom: 1.5rem;
+    }
+    .blog-post__subtitle {
+      font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+      color: var(--text-2);
+      line-height: 1.55;
+      max-width: 600px;
+    }
+    .blog-post__meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8125rem;
+      color: var(--text-3);
+    }
+    .blog-post__meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    /* ── Hero Image ── */
+    .blog-post__hero-img {
+      margin: clamp(2.5rem, 5vw, 4rem) 0;
+      max-width: 1060px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .blog-post__hero-img img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 21 / 9;
+      object-fit: cover;
+      object-position: center;
+      border-radius: var(--radius-lg);
+    }
+    .blog-post__hero-img figcaption {
+      font-size: 0.75rem;
+      color: var(--text-3);
+      margin-top: 0.75rem;
+      font-style: italic;
+    }
+
+    /* ── Table of Contents (chapter bar) ── */
+    .blog-toc {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      background: rgba(250, 248, 245, 0.97);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      transform: translateY(-200%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .blog-toc--visible {
+      transform: translateY(0);
+    }
+    .blog-toc__inner {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0.4rem clamp(1.25rem, 4vw, 2.5rem) 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .blog-toc__link {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-2);
+      white-space: nowrap;
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .blog-toc__link:hover {
+      color: var(--text);
+      border-color: var(--text-3);
+    }
+    .blog-toc__link--active {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(180, 83, 9, 0.06);
+      font-weight: 600;
+    }
+    /* Mobile: wrap into 3+2 grid */
+    @media (max-width: 520px) {
+      .blog-toc {
+        top: 60px;
+      }
+      .blog-toc__inner {
+        max-width: 400px;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0.35rem;
+        padding: 0.5rem 1rem;
+      }
+      .blog-toc__link {
+        grid-column: span 2;
+        padding: 0.3rem 0;
+        font-size: 0.6875rem;
+      }
+      .blog-toc__link:nth-child(4) { grid-column: 2 / 4; }
+      .blog-toc__link:nth-child(5) { grid-column: 4 / 6; }
+    }
+
+    /* ── Body ── */
+    .blog-post__body {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .blog-post__body h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.125rem);
+      margin: 2.75rem 0 1rem;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      scroll-margin-top: 4rem;
+    }
+    .blog-post__body h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.1875rem, 2vw, 1.4375rem);
+      margin: 2rem 0 0.75rem;
+      line-height: 1.2;
+      color: var(--text);
+    }
+    .blog-post__body p {
+      margin-bottom: 1.375rem;
+      line-height: 1.72;
+    }
+    .blog-post__body ul, .blog-post__body ol {
+      margin: 1.25rem 0 1.75rem 1.25rem;
+    }
+    .blog-post__body li {
+      margin-bottom: 0.625rem;
+      list-style: disc;
+      line-height: 1.65;
+      padding-left: 0.25rem;
+    }
+    .blog-post__body ol li { list-style: decimal; }
+    .blog-post__body a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: color 0.2s;
+    }
+    .blog-post__body a:hover { color: var(--accent-hover); }
+    .blog-post__body strong { font-weight: 600; }
+
+    /* ── Pull Quote ── */
+    .blog-post__pullquote {
+      max-width: 860px;
+      margin: 2.25rem auto;
+      padding: 2rem 0;
+      border-top: 2px solid var(--accent);
+      border-bottom: 1px solid var(--border);
+    }
+    .blog-post__pullquote p {
+      font-family: var(--font-display);
+      font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+      line-height: 1.35;
+      font-style: italic;
+      color: var(--text);
+      margin: 0;
+    }
+
+    /* ── Cost Comparison Grid ── */
+    .blog-post__compare {
+      max-width: 860px;
+      margin: 1.5rem auto 1.75rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .blog-post__compare-col h4 {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.625rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .blog-post__compare-col--yes h4 {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .blog-post__compare-col ul {
+      margin: 0;
+      padding: 0;
+    }
+    .blog-post__compare-col li {
+      list-style: none;
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      padding: 0.4rem 0;
+      color: var(--text-2);
+    }
+
+    /* ── Inline Figure ── */
+    .blog-post__figure {
+      max-width: 860px;
+      margin: 2.25rem auto;
+    }
+    .blog-post__figure img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+    }
+    .blog-post__figure figcaption {
+      font-size: 0.75rem;
+      color: var(--text-3);
+      margin-top: 0.75rem;
+      font-style: italic;
+    }
+
+    /* ── Divider ── */
+    .blog-post__divider {
+      max-width: 860px;
+      margin: 3rem auto;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── CTA ── */
+    .blog-post__cta {
+      max-width: 860px;
+      margin: 4rem auto 0;
+      padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3.5rem);
+      background: var(--dark);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .blog-post__cta-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--dark-text);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+    .blog-post__cta-text p {
+      color: var(--dark-text-2);
+      font-size: 0.9375rem;
+      max-width: 420px;
+    }
+    .blog-post__cta .btn--primary {
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .blog-post__footer-space {
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .blog-post__hero-img img {
+        aspect-ratio: 16 / 9;
+        border-radius: 0;
+      }
+      .blog-post__hero-img {
+        margin-left: calc(-1 * clamp(1.25rem, 4vw, 2.5rem));
+        margin-right: calc(-1 * clamp(1.25rem, 4vw, 2.5rem));
+      }
+      .blog-post__cta {
+        flex-direction: column;
+        text-align: center;
+      }
+      .blog-post__cta-text p {
+        max-width: 100%;
+      }
+      .blog-post__meta {
+        gap: 1rem;
+      }
+      .blog-post__compare {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <span class="nav__logo-text">Will</span>
+        <span class="nav__logo-dot"></span>
+        <span class="nav__logo-text">C</span>
+      </a>
+      <div class="nav__center" id="navLinks">
+        <a href="/" class="nav__link nav__link--mobile-home">Home</a>
+        <a href="/work/" class="nav__link">My Work</a>
+        <a href="/pricing/" class="nav__link">Pricing</a>
+        <a href="/about/" class="nav__link">About Me</a>
+        <a href="/faq/" class="nav__link">FAQ</a>
+        <a href="/blog/" class="nav__link nav__link--active">Blog</a>
+        <a href="/contact/" class="nav__link nav__link--mobile-cta">Get a Quote</a>
+      </div>
+      <a href="/contact/" class="nav__cta">Get a Quote</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Table of Contents Bar -->
+  <div class="blog-toc" id="blogToc">
+    <div class="blog-toc__inner">
+      <a href="#signs" class="blog-toc__link" data-toc="signs">Warning Signs</a>
+      <a href="#redesign" class="blog-toc__link" data-toc="redesign">Redesign</a>
+      <a href="#rebuild" class="blog-toc__link" data-toc="rebuild">Rebuild</a>
+      <a href="#cost" class="blog-toc__link" data-toc="cost">Cost</a>
+      <a href="#next" class="blog-toc__link" data-toc="next">Get Started</a>
+    </div>
+  </div>
+
+  <!-- BLOG POST -->
+  <article>
+    <!-- Header -->
+    <div class="blog-post__header-wrap">
+      <div class="container">
+        <div class="blog-post__header">
+          <a href="/blog/" class="blog-post__back">&larr; Back to Blog</a>
+          <p class="blog-post__category">Strategy &middot; Web Design</p>
+          <h1 class="blog-post__title">Should You Redesign Your Website or Start From Scratch?</h1>
+          <p class="blog-post__subtitle">Your site isn't working the way it used to. But does that mean you need a fresh coat of paint — or a whole new house? Here's how to know which one saves you money and which one wastes it.</p>
+          <div class="blog-post__meta">
+            <span class="blog-post__meta-item">April 17, 2026</span>
+            <span class="blog-post__meta-item">5 min read</span>
+            <span class="blog-post__meta-item">By Will C.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="container">
+      <figure class="blog-post__hero-img">
+        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&q=80&fit=crop"
+             alt="Designer working on a website layout on a laptop — website redesign vs rebuild concept"
+             loading="eager">
+      </figure>
+    </div>
+
+    <!-- Body -->
+    <div class="container">
+      <div class="blog-post__body">
+
+        <p>At least once a month, someone reaches out and says some version of the same thing: <em>"My website feels outdated and I don't know if I should fix it or just start over."</em></p>
+
+        <p>It's a fair question. And the answer matters, because one path costs you a few hundred dollars and a couple of weeks. The other costs you a few thousand and a month or more. Pick the wrong one and you either waste money rebuilding something that didn't need to be rebuilt, or you keep pouring time into a site that was broken at the foundation.</p>
+
+        <p>Here's how I walk clients through that decision.</p>
+
+        <h2 id="signs">Signs it's time for a change</h2>
+
+        <p>Before you decide between a redesign and a rebuild, make sure you actually need either one. Not every website that feels old is actually hurting your business. But if you're seeing any of these, something needs to happen:</p>
+
+        <ul>
+          <li><strong>Your site isn't mobile-friendly.</strong> Over 60% of web traffic comes from phones. If your site pinches and scrolls sideways on mobile, you're losing people before they even read a word.</li>
+          <li><strong>It loads slowly.</strong> If it takes more than three seconds, most visitors leave. That's not an opinion — it's what <a href="/blog/website-not-getting-customers/">the data shows</a>.</li>
+          <li><strong>You're embarrassed to share the link.</strong> If you hand someone a business card and hope they don't actually visit your site, that's a problem.</li>
+          <li><strong>Your content is outdated.</strong> Old pricing, discontinued services, a team page with people who left two years ago. It makes you look like you're not paying attention.</li>
+          <li><strong>You're not getting leads or calls from it.</strong> A website that doesn't generate business is just an expense. It should be <a href="/work/">working for you</a>.</li>
+        </ul>
+
+        <p>If two or more of those hit home, keep reading. The next question is what kind of fix you actually need.</p>
+
+        <h2 id="redesign">When a redesign is enough</h2>
+
+        <p>A redesign means you keep the bones of your current site and update what's on the surface. New visuals, better copy, improved layout, modern fonts and colors. You're not tearing down the house — you're renovating it.</p>
+
+        <p>A redesign is the right call when:</p>
+
+        <ul>
+          <li>Your site loads reasonably fast (under 4 seconds)</li>
+          <li>It's already mobile-responsive, just not great-looking</li>
+          <li>The page structure makes sense — you just need better content and design</li>
+          <li>Your site is built on a decent platform (clean HTML/CSS, a solid Shopify theme, a well-maintained WordPress setup)</li>
+          <li>You mainly need updated branding, photography, or messaging</li>
+        </ul>
+
+        <p>In this case, a full rebuild would be overkill. You'd be paying to replace things that already work. A redesign gives you a modern, professional look without the time and cost of starting from zero.</p>
+
+        <p>I've done plenty of these. Sometimes a client comes to me thinking they need a brand new site, and after I look at what they have, I tell them the truth: <em>"Your structure is fine. Let me just make it look and read like it belongs in 2026."</em> That honesty saves them money, and they remember it.</p>
+
+        <h2 id="rebuild">When you need to start fresh</h2>
+
+        <p>A rebuild means scrapping the existing site and building a new one from the ground up. New code, new design, new structure. It takes longer and costs more, but sometimes it's the only option that makes sense.</p>
+
+        <p>You need a rebuild when:</p>
+
+        <ul>
+          <li>Your site was built on a drag-and-drop builder (Wix, Squarespace, GoDaddy) and you've hit the ceiling on what it can do</li>
+          <li>The codebase is a mess — bloated plugins, broken scripts, slow load times that can't be fixed with optimization alone</li>
+          <li>Your business has changed significantly. New services, new audience, new brand positioning that the current site structure can't support</li>
+          <li>You have no mobile responsiveness at all, and retrofitting it would take as long as starting over</li>
+          <li>Your site was built five or more years ago with outdated technology</li>
+        </ul>
+
+        <p>If the foundation is cracked, painting the walls won't help. A clean start lets you build something faster, leaner, and designed specifically for where your business is now — not where it was when the old site went live.</p>
+
+      </div>
+
+      <!-- Inline Image -->
+      <figure class="blog-post__figure">
+        <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1200&q=80&fit=crop"
+             alt="UX wireframes and design planning on a whiteboard — planning a website rebuild"
+             loading="lazy">
+        <figcaption>A rebuild starts with structure and strategy, not just aesthetics.</figcaption>
+      </figure>
+
+      <div class="blog-post__body">
+
+        <h2 id="cost">What each option costs</h2>
+
+        <p>This is where most designers get vague. I won't. Here's a realistic breakdown of what you'll pay for each path, whether you hire me or someone else.</p>
+
+      </div>
+
+      <!-- Comparison Grid -->
+      <div class="blog-post__compare">
+        <div class="blog-post__compare-col">
+          <h4>Redesign</h4>
+          <ul>
+            <li>Keep existing structure</li>
+            <li>Update visuals + content</li>
+            <li>Faster turnaround</li>
+            <li>Lower cost</li>
+            <li>Good if core is solid</li>
+          </ul>
+        </div>
+        <div class="blog-post__compare-col blog-post__compare-col--yes">
+          <h4>Full Rebuild</h4>
+          <ul>
+            <li>Start from zero</li>
+            <li>New code, new design</li>
+            <li>Takes longer</li>
+            <li>Higher investment</li>
+            <li>Necessary if foundation is broken</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="blog-post__body">
+
+        <p>A redesign typically runs <strong>$300 to $1,500</strong> depending on how many pages need updating and how much content needs rewriting. A full rebuild ranges from <strong>$999 to $5,000+</strong> depending on scope, features, and complexity. Check <a href="/pricing/">my pricing page</a> for exact numbers on what I charge.</p>
+
+        <p>The mistake I see most often? Businesses paying rebuild prices for what should have been a redesign. An agency tells them they need a "complete overhaul" when what they actually need is new copy, a few layout tweaks, and some updated images. That's not a $5,000 job. Don't let someone convince you otherwise.</p>
+
+      </div>
+
+      <!-- Pull Quote -->
+      <div class="blog-post__pullquote">
+        <p>Most businesses don't need a brand new website every two years. They need someone to look at what they have and tell them the truth about what's working.</p>
+      </div>
+
+      <div class="blog-post__body">
+
+        <h2 id="next">How to get started</h2>
+
+        <p>If you've read this far, you probably already have a gut feeling about which direction is right for your site. Here's how to confirm it:</p>
+
+        <ol>
+          <li><strong>Run a quick audit.</strong> Open your site on your phone. Time how long it takes to load. Click through every page. Does anything look broken, slow, or embarrassing? Write it down.</li>
+          <li><strong>Check your analytics.</strong> If you have Google Analytics set up, look at your bounce rate, average session duration, and which pages people actually visit. If they're landing on your homepage and immediately leaving, the problem is bigger than design.</li>
+          <li><strong>Get an honest opinion.</strong> Not from your friend who "knows computers." From someone who builds websites for a living and will tell you the truth, even if the truth is "you don't need to spend as much as you think."</li>
+        </ol>
+
+        <p>That last one is what I do. When you <a href="/contact/">reach out to me</a>, I'll look at your current site and give you a straight answer. If a redesign will get the job done, I'll say so. If you need a rebuild, I'll explain exactly why and what it'll cost. No upselling, no pressure to buy the bigger package.</p>
+
+        <p>I've been doing this long enough to know that the right recommendation builds more trust than the expensive one. You can see how I work on my <a href="/about/">about page</a>, or browse <a href="/work/">past projects</a> to see what both redesigns and rebuilds look like when they're done right.</p>
+
+        <p>Either way, stop guessing. Your website is either helping your business or holding it back. Let's figure out which one it is and fix it.</p>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="blog-post__cta">
+        <div class="blog-post__cta-text">
+          <h2>Not sure which option you need?</h2>
+          <p>Send me your site. I'll take a look and tell you whether a redesign or rebuild makes sense — no charge, no strings.</p>
+        </div>
+        <a href="/contact/" class="btn btn--primary">Get a Free Review</a>
+      </div>
+
+      <div class="blog-post__footer-space"></div>
+    </div>
+  </article>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="/" class="nav__logo">
+            <span class="nav__logo-text">Will</span>
+            <span class="nav__logo-dot"></span>
+            <span class="nav__logo-text">C</span>
+          </a>
+          <p class="footer__tagline">Custom-designed websites<br>that work as hard as you do.</p>
+        </div>
+        <div class="footer__nav">
+          <div class="footer__col">
+            <h3 class="footer__heading">Pages</h3>
+            <a href="/work/">My Work</a>
+            <a href="/pricing/">Pricing</a>
+            <a href="/about/">About Me</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/blog/">Blog</a>
+            <a href="/contact/">Contact</a>
+          </div>
+          <div class="footer__col">
+            <h3 class="footer__heading">Services</h3>
+            <a href="/pricing/">Landing Pages</a>
+            <a href="/pricing/">Full Websites</a>
+            <a href="/pricing/">Shopify Stores</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Will C. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Mobile nav
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('nav__center--open');
+      toggle.classList.toggle('nav__toggle--active', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('nav__center--open');
+        toggle.classList.remove('nav__toggle--active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // TOC: show/hide bar on scroll + highlight active section
+    (function() {
+      const toc = document.getElementById('blogToc');
+      if (!toc) return;
+      const tocLinks = toc.querySelectorAll('.blog-toc__link');
+      const sections = document.querySelectorAll('h2[id]');
+
+      // Show TOC after scrolling 100px
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+          toc.classList.add('blog-toc--visible');
+        } else {
+          toc.classList.remove('blog-toc--visible');
+        }
+      }, { passive: true });
+
+      // Highlight active section
+      const sectionObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            tocLinks.forEach(function(l) { l.classList.remove('blog-toc__link--active'); });
+            const active = toc.querySelector('[data-toc="' + entry.target.id + '"]');
+            if (active) active.classList.add('blog-toc__link--active');
+          }
+        });
+      }, { threshold: 0, rootMargin: '-80px 0px -60% 0px' });
+      sections.forEach(function(s) { sectionObserver.observe(s); });
+
+      // Smooth scroll TOC links
+      tocLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          var target = document.querySelector(link.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
