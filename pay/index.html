@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Payment — Will C. Web Design</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #faf8f5;
+      --bg-alt: #f3efe9;
+      --surface: #fffffe;
+      --text: #1c1917;
+      --text-2: #57534e;
+      --text-3: #a8a29e;
+      --accent: #b45309;
+      --accent-hover: #92400e;
+      --accent-light: #fef3c7;
+      --border: #e7e5e4;
+      --green: #16a34a;
+      --green-light: #f0fdf4;
+      --radius: 6px;
+      --radius-lg: 12px;
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container { width: 100%; max-width: 620px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Header */
+    .pay-header { width: 100%; padding: 1.5rem 0; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+    .pay-header .container { display: flex; align-items: center; justify-content: center; }
+    .logo { font-family: var(--font-display); font-size: 1.5rem; color: var(--text); text-decoration: none; }
+    .logo span { color: var(--accent); }
+
+    /* Main */
+    .pay-main { padding-bottom: 4rem; flex: 1; width: 100%; }
+    .greeting { font-family: var(--font-display); font-size: clamp(1.75rem, 1.5rem + 1.5vw, 2.5rem); font-weight: 400; line-height: 1.2; margin-bottom: 0.5rem; }
+    .greeting em { font-style: italic; color: var(--text-2); }
+    .subtitle { color: var(--text-2); margin-bottom: 2rem; font-size: 1.0625rem; }
+
+    /* Payment card */
+    .pay-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 1rem; transition: all 0.4s var(--ease-out); }
+    .pay-card-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+
+    /* Line items */
+    .line-items { margin-bottom: 1.25rem; }
+    .line-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 0.875rem 0; border-bottom: 1px solid var(--border); }
+    .line-item:last-child { border-bottom: none; }
+    .line-item-info { flex: 1; padding-right: 1rem; }
+    .line-item-name { color: var(--text); font-size: 0.9375rem; font-weight: 500; }
+    .line-item-desc { color: var(--text-3); font-size: 0.8125rem; margin-top: 0.125rem; line-height: 1.4; }
+    .line-item-price { font-weight: 600; font-size: 1.0625rem; white-space: nowrap; }
+    .line-item-price small { font-weight: 400; color: var(--text-3); font-size: 0.8125rem; }
+
+    .line-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 1rem; border-top: 2px solid var(--text); margin-bottom: 1.5rem; }
+    .line-total-label { font-weight: 600; font-size: 0.9375rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .line-total-price { font-size: 1.5rem; font-weight: 700; }
+    .line-total-price small { font-weight: 400; color: var(--text-3); font-size: 0.875rem; }
+
+    /* Trust strip */
+    .trust-strip { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+    .trust-item { display: flex; align-items: center; gap: 0.375rem; color: var(--text-3); font-size: 0.75rem; font-weight: 500; }
+    .trust-item svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* PayPal / demo button */
+    .paypal-container { min-height: 55px; }
+    .demo-btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      width: 100%; padding: 16px 24px; font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+      border: none; border-radius: var(--radius); cursor: pointer; transition: all 0.2s var(--ease-out);
+      background: #ffc439; color: #111;
+    }
+    .demo-btn:hover { background: #f0b72d; transform: translateY(-1px); }
+    .demo-btn img { height: 20px; }
+
+    /* What's included box */
+    .included { background: var(--bg-alt); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+    .included-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 0.625rem; }
+    .included-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.375rem 1rem; }
+    .included-item { display: flex; align-items: center; gap: 0.375rem; font-size: 0.8125rem; color: var(--text-2); }
+    .included-item svg { width: 14px; height: 14px; color: var(--green); flex-shrink: 0; }
+
+    /* Demo banner */
+    .demo-banner { background: var(--accent-light); color: var(--accent-hover); text-align: center; padding: 0.5rem 1rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.05em; width: 100%; }
+
+    /* Success on card */
+    .pay-card--success { background: var(--green-light); border-color: var(--green); }
+    .pay-card--success .pay-card-label { color: var(--green); }
+    .success-msg { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; padding: 0.75rem 0; }
+    .success-msg svg { width: 40px; height: 40px; color: var(--green); }
+    .success-msg strong { font-size: 1.25rem; color: var(--green); }
+    .success-msg span { font-size: 0.9375rem; color: var(--text-2); }
+
+    /* ═══ Modal overlay ═══ */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(28, 25, 23, 0.5);
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem;
+      opacity: 0; transition: opacity 0.3s var(--ease-out);
+      pointer-events: none;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--surface); border-radius: var(--radius-lg);
+      width: 100%; max-width: 440px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+      overflow: hidden;
+      transform: scale(0.95) translateY(10px);
+      transition: transform 0.35s var(--ease-out);
+    }
+    .modal-overlay.active .modal { transform: scale(1) translateY(0); }
+
+    /* Modal step containers */
+    .modal-step { display: none; opacity: 0; }
+    .modal-step.active { display: block; animation: stepIn 0.4s var(--ease-out) forwards; }
+    .modal-step.fading { animation: stepOut 0.25s var(--ease-out) forwards; }
+    @keyframes stepIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes stepOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-8px); } }
+
+    /* Step 1: Demo PayPal */
+    .modal-pp-header {
+      background: #f5f7fa; padding: 1rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .modal-pp-header img { height: 22px; }
+    .modal-pp-close {
+      background: none; border: none; cursor: pointer; color: var(--text-3); font-size: 1.25rem; padding: 0.25rem;
+      line-height: 1; transition: color 0.15s;
+    }
+    .modal-pp-close:hover { color: var(--text); }
+    .modal-pp-body { padding: 2rem 1.5rem; text-align: center; }
+    .modal-pp-amount { font-size: 2rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .modal-pp-to { color: var(--text-3); font-size: 0.875rem; margin-bottom: 2rem; }
+    .modal-pp-btn {
+      display: block; width: 100%; padding: 14px; font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+      background: #0070ba; color: #fff; border: none; border-radius: var(--radius); cursor: pointer;
+      transition: background 0.2s;
+    }
+    .modal-pp-btn:hover { background: #005ea6; }
+    .modal-pp-secure { display: flex; align-items: center; justify-content: center; gap: 0.375rem; margin-top: 1rem; color: var(--text-3); font-size: 0.75rem; }
+    .modal-pp-secure svg { width: 12px; height: 12px; }
+
+    /* Step 2: Success → Review */
+    .modal-success { padding: 2.5rem 2rem; text-align: center; }
+    .modal-success-check {
+      width: 64px; height: 64px; border-radius: 50%; background: var(--green-light);
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;
+    }
+    .modal-success-check svg { width: 32px; height: 32px; color: var(--green); }
+    .modal-success h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.375rem; }
+    .modal-success p { color: var(--text-2); font-size: 0.9375rem; }
+
+    /* Step 3: Review ask */
+    .modal-review { padding: 2rem 2rem 2.25rem; text-align: center; }
+
+    .modal-review-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    }
+
+    .modal-review-personal {
+      font-family: var(--font-display); font-size: 1.375rem; font-style: italic;
+      color: var(--text); line-height: 1.35; margin-bottom: 1rem;
+      max-width: 320px; margin-left: auto; margin-right: auto;
+    }
+
+    .modal-review-body {
+      color: var(--text-2); font-size: 0.875rem; line-height: 1.55;
+      margin-bottom: 1.5rem; max-width: 340px; margin-left: auto; margin-right: auto;
+    }
+
+    .modal-review-stars {
+      display: flex; justify-content: center; gap: 0.375rem; margin-bottom: 1.5rem;
+    }
+    .modal-review-stars svg {
+      width: 36px; height: 36px; color: #facc15;
+      filter: drop-shadow(0 1px 2px rgba(250, 204, 21, 0.4));
+      opacity: 0; transform: scale(0);
+    }
+    .modal-review-stars.animate svg {
+      animation: starPop 0.35s var(--ease-out) forwards;
+    }
+    .modal-review-stars svg:nth-child(1) { animation-delay: 0s; }
+    .modal-review-stars svg:nth-child(2) { animation-delay: 0.07s; }
+    .modal-review-stars svg:nth-child(3) { animation-delay: 0.14s; }
+    .modal-review-stars svg:nth-child(4) { animation-delay: 0.21s; }
+    .modal-review-stars svg:nth-child(5) { animation-delay: 0.28s; }
+    @keyframes starPop {
+      0% { opacity: 0; transform: scale(0) rotate(-15deg); }
+      70% { transform: scale(1.2) rotate(3deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0); }
+    }
+
+    .modal-review-btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.625rem;
+      width: 100%; padding: 15px 2rem;
+      font-family: var(--font-body); font-size: 1.0625rem; font-weight: 600;
+      background: #4285f4; color: #fff; border: none; border-radius: var(--radius);
+      cursor: pointer; text-decoration: none; transition: all 0.2s var(--ease-out);
+    }
+    .modal-review-btn:hover { background: #3367d6; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3); }
+    .modal-review-btn svg { width: 20px; height: 20px; }
+
+    .modal-review-effort {
+      display: flex; align-items: center; justify-content: center; gap: 0.375rem;
+      margin-top: 0.75rem; color: var(--text-3); font-size: 0.75rem;
+    }
+    .modal-review-effort svg { width: 12px; height: 12px; }
+
+    .modal-review-skip {
+      display: inline-block; margin-top: 1.25rem; color: var(--text-3); font-size: 0.75rem;
+      background: none; border: none; cursor: pointer; font-family: var(--font-body);
+      opacity: 0.6; transition: opacity 0.15s;
+    }
+    .modal-review-skip:hover { opacity: 1; }
+
+    /* Loading / error */
+    .loading { text-align: center; padding: 4rem 0; color: var(--text-3); }
+    .error-msg { text-align: center; padding: 4rem 2rem; color: var(--text-2); }
+    .error-msg h2 { font-family: var(--font-display); font-size: 1.75rem; color: var(--text); margin-bottom: 0.5rem; }
+
+    /* Footer */
+    .pay-footer { width: 100%; padding: 2rem 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-3); font-size: 0.8125rem; }
+    .pay-footer a { color: var(--text-2); text-decoration: underline; }
+
+    /* Animations */
+    .fade-in { opacity: 0; transform: translateY(10px); animation: fadeIn 0.5s var(--ease-out) forwards; }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    @keyframes checkPop {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .check-pop { animation: checkPop 0.5s var(--ease-out) forwards; }
+    .hidden { display: none !important; }
+
+    /* Text overflow protection */
+    .greeting em, .modal-review-personal span {
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .greeting { max-width: 100%; overflow: hidden; }
+    .line-item-info { min-width: 0; }
+    .line-item-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    /* Loading spinner for PayPal SDK */
+    .paypal-loading {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 1rem 0; color: var(--text-3); font-size: 0.875rem;
+    }
+    .paypal-loading-spinner {
+      width: 18px; height: 18px; border: 2px solid var(--border);
+      border-top-color: var(--accent); border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Button disabled state */
+    .demo-btn:disabled, .modal-pp-btn:disabled {
+      opacity: 0.6; cursor: not-allowed; transform: none !important;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .modal { transform: none !important; }
+      .modal-overlay { transition: none !important; }
+    }
+
+    /* Focus visible for keyboard navigation */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .modal-pp-close:focus-visible { outline-offset: 0; }
+
+    /* Headshot fallback */
+    .modal-review-avatar-fallback {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 1.375rem;
+      margin: 0 auto 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    }
+
+    @media (max-width: 480px) {
+      .included-list { grid-template-columns: 1fr; }
+      .trust-strip { flex-wrap: wrap; gap: 0.75rem; }
+      .modal { max-width: 100%; }
+      .pay-card { padding: 1.5rem; }
+      .greeting { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Demo banner -->
+  <div id="demoBanner" class="demo-banner hidden">DEMO MODE — click through to preview the full payment funnel</div>
+
+  <header class="pay-header">
+    <div class="container">
+      <a href="https://willcwebdesign.com" class="logo">Will C<span>.</span></a>
+    </div>
+  </header>
+
+  <main class="pay-main">
+    <div class="container">
+      <div id="loading" class="loading">Loading your invoice...</div>
+
+      <div id="error" class="error-msg hidden">
+        <h2>Invalid Payment Link</h2>
+        <p>This link appears to be broken or expired.</p>
+        <p style="margin-top:1rem;"><a href="https://willcwebdesign.com/contact/" style="color:var(--accent);text-decoration:underline;font-weight:600;">Contact Will for a new link</a></p>
+      </div>
+
+      <div id="content" class="hidden">
+        <h1 class="greeting fade-in">Welcome, <em id="clientName"></em></h1>
+        <p class="subtitle fade-in" style="animation-delay:0.05s">Everything's ready to go. Complete your payment below to get started.</p>
+
+        <div id="payCard" class="pay-card fade-in" style="animation-delay:0.1s">
+          <div class="pay-card-label">Your Project</div>
+
+          <div class="line-items">
+            <div id="setupLine" class="line-item hidden">
+              <div class="line-item-info">
+                <div class="line-item-name">Custom Website Build</div>
+                <div class="line-item-desc">Design, development & launch — yours to keep</div>
+              </div>
+              <span class="line-item-price">$<span id="setupPrice"></span></span>
+            </div>
+            <div id="monthlyLine" class="line-item hidden">
+              <div class="line-item-info">
+                <div class="line-item-name">Monthly Care Plan</div>
+                <div class="line-item-desc">Hosting, security, updates & priority support</div>
+              </div>
+              <span class="line-item-price">$<span id="monthlyPrice"></span> <small>/mo</small></span>
+            </div>
+          </div>
+
+          <div id="includedBox" class="included hidden">
+            <div class="included-title">Included with your plan</div>
+            <div class="included-list">
+              <div class="included-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Fast, secure hosting</div>
+              <div class="included-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> SSL certificate</div>
+              <div class="included-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Content updates</div>
+              <div class="included-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Priority support</div>
+              <div class="included-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Performance monitoring</div>
+              <div class="included-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Cancel anytime</div>
+            </div>
+          </div>
+
+          <div id="totalLine" class="line-total">
+            <span class="line-total-label">Due Today</span>
+            <span class="line-total-price">$<span id="totalPrice"></span> <small id="totalSuffix"></small></span>
+          </div>
+
+          <div id="payButtons" class="paypal-container"></div>
+
+          <div id="trustStrip" class="trust-strip">
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Secure checkout
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              PayPal Buyer Protection
+            </div>
+            <div class="trust-item" id="cancelAnytime">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+              Cancel anytime
+            </div>
+          </div>
+
+          <div id="paySuccess" class="hidden">
+            <div class="success-msg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+              <strong>Payment confirmed</strong>
+              <span>You're all set. We'll be in touch shortly to kick things off.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="pay-footer">
+    <div class="container">
+      <p>Will C. Web Design &mdash; Las Vegas, NV &bull; <a href="https://willcwebdesign.com">willcwebdesign.com</a></p>
+    </div>
+  </footer>
+
+  <!-- ═══ Modal ═══ -->
+  <div id="modalOverlay" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Payment">
+    <div class="modal">
+
+      <!-- Step 1: PayPal checkout (demo) -->
+      <div id="modalPaypal" class="modal-step active">
+        <div class="modal-pp-header">
+          <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png" alt="PayPal">
+          <button class="modal-pp-close" onclick="closeModal()" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-pp-body">
+          <div class="modal-pp-amount" id="modalAmount"></div>
+          <div class="modal-pp-to">to Will C. Web Design</div>
+          <button class="modal-pp-btn" onclick="demoCompletePayment()">Pay Now</button>
+          <div class="modal-pp-secure">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Encrypted & secure
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Success (brief) -->
+      <div id="modalSuccess" class="modal-step">
+        <div class="modal-success">
+          <div class="modal-success-check check-pop">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3>Payment received!</h3>
+          <p>Thank you — we're excited to get started.</p>
+        </div>
+      </div>
+
+      <!-- Step 3: Review ask -->
+      <div id="modalReview" class="modal-step">
+        <div class="modal-review">
+
+          <img class="modal-review-avatar" src="/google_business_images/will_headshot.jpg" alt="Will C." onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="modal-review-avatar-fallback" style="display:none;">W</div>
+
+          <div class="modal-review-personal">
+            "Thank you for trusting me with your project, <span id="reviewClientName"></span>."
+          </div>
+
+          <p class="modal-review-body">
+            As a one-person studio, every review makes a real difference.
+            If you're happy with the experience so far, I'd really appreciate a quick Google review.
+          </p>
+
+          <div id="reviewStars" class="modal-review-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+
+          <a id="reviewLink" href="#" target="_blank" rel="noopener" class="modal-review-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Write a Quick Review
+          </a>
+
+          <div class="modal-review-effort">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Most people finish in under 30 seconds
+          </div>
+
+          <button class="modal-review-skip" onclick="closeModal()">No thanks</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ── Config ──
+    var PAYPAL_CLIENT_ID = 'AYiUHZYmxhIYVeWUhAbqHKCHdZgckY7aF2zz5oeszPPcTg0O5NOL32MyQkGDbUD-schkbrOwze1_Pn4H';
+    var GOOGLE_REVIEW_URL = 'https://g.page/r/Cc-HdPiHN2lNEAI/review';
+
+    // ── Parse & sanitize URL params ──
+    var params = new URLSearchParams(window.location.search);
+    var clientName = (params.get('client') || '').slice(0, 200);
+    var setupAmount = params.get('setup');
+    var monthlyAmount = params.get('monthly');
+    var planId = params.get('plan');
+    var isDemo = params.get('demo') === '1';
+
+    // Validate numeric params
+    if (setupAmount && (isNaN(parseFloat(setupAmount)) || parseFloat(setupAmount) < 0 || parseFloat(setupAmount) > 100000)) {
+      setupAmount = null;
+    }
+    if (monthlyAmount && (isNaN(parseFloat(monthlyAmount)) || parseFloat(monthlyAmount) < 0 || parseFloat(monthlyAmount) > 100000)) {
+      monthlyAmount = null;
+    }
+
+    var $loading = document.getElementById('loading');
+    var $error = document.getElementById('error');
+    var $content = document.getElementById('content');
+    var $overlay = document.getElementById('modalOverlay');
+
+    if (!clientName) {
+      $loading.classList.add('hidden');
+      $error.classList.remove('hidden');
+    } else {
+      init();
+    }
+
+    function fmt(n) {
+      return parseFloat(n).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+
+    function init() {
+      if (isDemo) document.getElementById('demoBanner').classList.remove('hidden');
+
+      document.getElementById('clientName').textContent = clientName;
+      document.getElementById('reviewClientName').textContent = clientName.split(' ')[0];
+      document.getElementById('reviewLink').href = GOOGLE_REVIEW_URL;
+
+      var hasSetup = setupAmount && parseFloat(setupAmount) > 0;
+      var hasMonthly = monthlyAmount && parseFloat(monthlyAmount) > 0;
+
+      if (hasSetup) {
+        document.getElementById('setupLine').classList.remove('hidden');
+        document.getElementById('setupPrice').textContent = fmt(setupAmount);
+      }
+      if (hasMonthly) {
+        document.getElementById('monthlyLine').classList.remove('hidden');
+        document.getElementById('monthlyPrice').textContent = fmt(monthlyAmount);
+        document.getElementById('includedBox').classList.remove('hidden');
+      }
+      if (!hasMonthly) {
+        document.getElementById('cancelAnytime').classList.add('hidden');
+      }
+
+      // Due today
+      var dueToday = 0;
+      var suffix = '';
+      if (hasSetup && hasMonthly && planId) {
+        dueToday = parseFloat(setupAmount) + parseFloat(monthlyAmount);
+        suffix = 'then $' + fmt(monthlyAmount) + '/mo';
+      } else if (hasSetup && !planId) {
+        dueToday = parseFloat(setupAmount);
+        suffix = 'one-time';
+      } else if (hasMonthly && planId) {
+        dueToday = parseFloat(monthlyAmount);
+        suffix = 'per month';
+      }
+      document.getElementById('totalPrice').textContent = fmt(dueToday);
+      document.getElementById('totalSuffix').textContent = suffix;
+      document.getElementById('modalAmount').textContent = '$' + fmt(dueToday);
+
+      $loading.classList.add('hidden');
+      $content.classList.remove('hidden');
+
+      if (isDemo) {
+        renderDemoButtons(hasSetup, hasMonthly);
+      } else {
+        loadPayPalSDK(hasSetup, hasMonthly);
+      }
+    }
+
+    // ── Modal controls ──
+    function openModal() {
+      showModalStep('modalPaypal');
+      $overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      $overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function showModalStep(stepId) {
+      var current = document.querySelector('.modal-step.active');
+      var next = document.getElementById(stepId);
+
+      if (current && current.id !== stepId) {
+        // Fade out current, then fade in next
+        current.classList.add('fading');
+        setTimeout(function() {
+          current.classList.remove('active', 'fading');
+          next.classList.add('active');
+          // Trigger star animation when review step appears
+          if (stepId === 'modalReview') {
+            setTimeout(function() {
+              document.getElementById('reviewStars').classList.add('animate');
+            }, 150);
+          }
+        }, 250);
+      } else {
+        next.classList.add('active');
+      }
+    }
+
+    // Close modal on overlay click or Escape key
+    $overlay.addEventListener('click', function(e) {
+      if (e.target === $overlay) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && $overlay.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    // ── Demo buttons ──
+    function renderDemoButtons(hasSetup, hasMonthly) {
+      var container = document.getElementById('payButtons');
+      var btn = document.createElement('button');
+      btn.className = 'demo-btn';
+      btn.appendChild(document.createTextNode('Pay with '));
+      var ppImg = document.createElement('img');
+      ppImg.src = 'https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png';
+      ppImg.alt = 'PayPal';
+      btn.appendChild(ppImg);
+      btn.onclick = function() {
+        btn.disabled = true;
+        openModal();
+        setTimeout(function() { btn.disabled = false; }, 1000);
+      };
+      container.appendChild(btn);
+    }
+
+    // ── Demo: complete payment in modal ──
+    var demoPayProcessing = false;
+    function demoCompletePayment() {
+      if (demoPayProcessing) return;
+      demoPayProcessing = true;
+      var ppBtn = document.querySelector('.modal-pp-btn');
+      if (ppBtn) ppBtn.disabled = true;
+
+      showModalStep('modalSuccess');
+      updateCardToSuccess();
+
+      setTimeout(function() {
+        showModalStep('modalReview');
+        demoPayProcessing = false;
+      }, 800);
+    }
+
+    // ── PayPal Live ──
+    function loadPayPalSDK(hasSetup, hasMonthly) {
+      // Show loading state
+      var container = document.getElementById('payButtons');
+      var loadingEl = document.createElement('div');
+      loadingEl.className = 'paypal-loading';
+      loadingEl.innerHTML = '<div class="paypal-loading-spinner"></div>';
+      var loadingText = document.createElement('span');
+      loadingText.textContent = 'Loading secure checkout...';
+      loadingEl.appendChild(loadingText);
+      container.appendChild(loadingEl);
+
+      var script = document.createElement('script');
+      var sdkParams = ['client-id=' + PAYPAL_CLIENT_ID, 'currency=USD'];
+
+      if (planId) {
+        sdkParams.push('vault=true', 'intent=subscription');
+      } else {
+        sdkParams.push('intent=capture');
+      }
+
+      // Timeout after 15s
+      var sdkTimeout = setTimeout(function() {
+        showPayPalError(container);
+      }, 15000);
+
+      script.src = 'https://www.paypal.com/sdk/js?' + sdkParams.join('&');
+      script.onload = function() {
+        clearTimeout(sdkTimeout);
+        if (loadingEl.parentNode) loadingEl.remove();
+        renderPayPalButtons(hasSetup, hasMonthly);
+      };
+      script.onerror = function() {
+        clearTimeout(sdkTimeout);
+        showPayPalError(container);
+      };
+      document.head.appendChild(script);
+    }
+
+    function showPayPalError(container) {
+      container.textContent = '';
+      var p = document.createElement('p');
+      p.style.cssText = 'color:var(--text-3);text-align:center;padding:1rem 0;';
+      p.textContent = 'Unable to load PayPal. Please refresh or contact Will.';
+      container.appendChild(p);
+    }
+
+    function renderPayPalButtons(hasSetup, hasMonthly) {
+      var container = document.getElementById('payButtons');
+
+      if (planId) {
+        paypal.Buttons({
+          style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'subscribe', height: 48 },
+          createSubscription: function(data, actions) {
+            return actions.subscription.create({ plan_id: planId });
+          },
+          onApprove: function(data) {
+            onLivePaymentSuccess(data);
+          },
+          onError: function(err) {
+            console.error('PayPal error:', err);
+            alert('Something went wrong. Please try again or contact Will directly.');
+          }
+        }).render(container);
+      } else if (hasSetup) {
+        paypal.Buttons({
+          style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 48 },
+          createOrder: function(data, actions) {
+            return actions.order.create({
+              purchase_units: [{
+                amount: { value: parseFloat(setupAmount).toFixed(2) },
+                description: 'Custom Website Build — ' + clientName
+              }]
+            });
+          },
+          onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+              onLivePaymentSuccess(details);
+            });
+          },
+          onError: function(err) {
+            console.error('PayPal error:', err);
+            alert('Something went wrong. Please try again or contact Will directly.');
+          }
+        }).render(container);
+      }
+    }
+
+    // ── Live payment success — PayPal already uses a popup, so we open the review modal after ──
+    function onLivePaymentSuccess(data) {
+      updateCardToSuccess();
+
+      // Show success in modal, then transition to review
+      showModalStep('modalSuccess');
+      $overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      setTimeout(function() {
+        showModalStep('modalReview');
+      }, 800);
+    }
+
+    // ── Shared: update card on page ──
+    function updateCardToSuccess() {
+      document.getElementById('payButtons').classList.add('hidden');
+      document.getElementById('trustStrip').classList.add('hidden');
+      document.getElementById('totalLine').classList.add('hidden');
+      var ib = document.getElementById('includedBox');
+      if (ib) ib.classList.add('hidden');
+      document.getElementById('paySuccess').classList.remove('hidden');
+      document.getElementById('payCard').classList.add('pay-card--success');
+    }
+
+    // Payment records are synced via the "Sync PayPal" button in the payment tracker.
+    // No direct database writes from this page — PayPal is the source of truth.
+  </script>
+</body>
+</html>
