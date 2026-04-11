@@ -503,37 +503,88 @@
     </div>
   </div>
 
+  <!-- Supabase (read-only for payment link lookup) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
   <script>
     // ── Config ──
     var PAYPAL_CLIENT_ID = 'AQwOqIQX6hLpnhMdcnjQm-xJcfdEU7HR4Enu9i3ksno8q1o5IwXNN8amnWR83HFwqKf8JIOZ-ChdKJVf';
+    var SUPABASE_URL = 'https://ropwrhmypltauelyavkd.supabase.co';
+    var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJvcHdyaG15cGx0YXVlbHlhdmtkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3ODM3NDcsImV4cCI6MjA5MTM1OTc0N30.8r3KWDxLrLFpn6o8A5-nJMKtxB28PT401hNEVgtrXkA';
     var GOOGLE_REVIEW_URL = 'https://g.page/r/Cc-HdPiHN2lNEAI/review';
 
-    // ── Parse & sanitize URL params ──
+    // ── Parse URL ──
     var params = new URLSearchParams(window.location.search);
-    var clientName = (params.get('client') || '').slice(0, 200);
-    var setupAmount = params.get('setup');
-    var monthlyAmount = params.get('monthly');
-    var planId = params.get('plan');
+    var linkId = params.get('link');
     var isDemo = params.get('demo') === '1';
 
-    // Validate numeric params
-    if (setupAmount && (isNaN(parseFloat(setupAmount)) || parseFloat(setupAmount) < 0 || parseFloat(setupAmount) > 100000)) {
-      setupAmount = null;
-    }
-    if (monthlyAmount && (isNaN(parseFloat(monthlyAmount)) || parseFloat(monthlyAmount) < 0 || parseFloat(monthlyAmount) > 100000)) {
-      monthlyAmount = null;
-    }
+    // Data vars (populated from DB or fallback URL params)
+    var clientName = '';
+    var setupAmount = null;
+    var monthlyAmount = null;
+    var planId = null;
 
     var $loading = document.getElementById('loading');
     var $error = document.getElementById('error');
     var $content = document.getElementById('content');
     var $overlay = document.getElementById('modalOverlay');
 
-    if (!clientName) {
+    // ── Load data ──
+    if (isDemo) {
+      // Demo mode: use URL params directly
+      clientName = (params.get('client') || '').slice(0, 200);
+      setupAmount = params.get('setup');
+      monthlyAmount = params.get('monthly');
+      planId = params.get('plan');
+      if (!clientName) {
+        $loading.classList.add('hidden');
+        $error.classList.remove('hidden');
+      } else {
+        init();
+      }
+    } else if (linkId) {
+      // Production: fetch from Supabase
+      loadFromDatabase(linkId);
+    } else {
+      // No link ID and not demo
       $loading.classList.add('hidden');
       $error.classList.remove('hidden');
-    } else {
-      init();
+    }
+
+    async function loadFromDatabase(id) {
+      try {
+        var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        var result = await sb
+          .from('payment_links')
+          .select('*')
+          .eq('id', id)
+          .eq('active', true)
+          .single();
+
+        if (result.error || !result.data) {
+          $loading.classList.add('hidden');
+          $error.classList.remove('hidden');
+          return;
+        }
+
+        var link = result.data;
+        clientName = (link.client_name || '').slice(0, 200);
+        setupAmount = link.setup_amount > 0 ? String(link.setup_amount) : null;
+        monthlyAmount = link.monthly_amount > 0 ? String(link.monthly_amount) : null;
+        planId = link.plan_id || null;
+
+        if (!clientName) {
+          $loading.classList.add('hidden');
+          $error.classList.remove('hidden');
+          return;
+        }
+
+        init();
+      } catch (err) {
+        console.error('Failed to load payment link:', err);
+        $loading.classList.add('hidden');
+        $error.classList.remove('hidden');
+      }
     }
 
     function fmt(n) {
